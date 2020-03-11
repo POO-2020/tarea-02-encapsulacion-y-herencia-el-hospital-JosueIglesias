@@ -1,19 +1,19 @@
 export default class Nombre {
     constructor(nombre, apellidoPat, apellidoMat) {
-        this.nombre = nombre
-        this.apellidoMat = apellidoMat
-        this.apellidoPat = apellidoPat
+        this._nombre = nombre
+        this._apellidoMat = apellidoMat
+        this._apellidoPat = apellidoPat
     }
     getNombreCompleto() {
-        return `${this.nombre} ${this.apellidoPat} ${this.apellidoMat}`
+        return `${this._nombre} ${this._apellidoPat} ${this._apellidoMat}`
     }
 
     getApellidoNombre(){
-        return `${this.apellidoPat} ${this.apellidoMat} ${this.nombre}`
+        return `${this._apellidoPat} ${this._apellidoMat} ${this._nombre}`
     }
 
     getIniciales(){
-        return `${this.nombre.charAt(0)}${this.apellidoPat.charAt(0)}${this.apellidoMat.charAt(0)}`
+        return `${this._nombre.charAt(0)}${this._apellidoPat.charAt(0)}${this._apellidoMat.charAt(0)}`
     }
 }
 

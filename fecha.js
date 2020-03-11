@@ -1,7 +1,7 @@
 export default class Fecha {
     constructor (año, mes, dia) {
-        this.fecha = new Date(año, mes -1,  dia)
-        this.diaSemana = [
+        this._fecha = new Date(año, mes -1,  dia)
+        this._diaSemana = [
             "Domingo", 
             "Lunes", 
             "Martes", 
@@ -11,7 +11,7 @@ export default class Fecha {
             "Sabado",
         ]
 
-        this.nombreMes = [
+        this._nombreMes = [
             "Enero",
             "Febrero",
             "Marzo",
@@ -28,36 +28,36 @@ export default class Fecha {
     }
 
     getFecha(){
-        return `${this.fecha.getDate()}/${this.nombreMes[this.fecha.getMonth()]}/${this.fecha.getFullYear()}`
+        return `${this._fecha.getDate()}/${this._nombreMes[this._fecha.getMonth()]}/${this._fecha.getFullYear()}`
     }
 
     getAños(){
         let fechaActual = new Date(Date.now())
-        let añosTranscurridos = fechaActual.getFullYear() - this.fecha.getFullYear()
-        return `Han pasado ${añosTranscurridos} años desde ${this.fecha.getFullYear()}`
+        let añosTranscurridos = fechaActual.getFullYear() - this._fecha.getFullYear()
+        return `Han pasado ${añosTranscurridos} años desde ${this._fecha.getFullYear()}`
     }
 
     getMeses() {
         let fechaActual = new Date(Date.now())
-        let añosTranscurridos = fechaActual.getFullYear() - this.fecha.getFullYear()
-        return `Han pasado ${añosTranscurridos * 12} meses desde ${this.fecha.getFullYear()}` 
+        let añosTranscurridos = fechaActual.getFullYear() - this._fecha.getFullYear()
+        return `Han pasado ${añosTranscurridos * 12} meses desde ${this._fecha.getFullYear()}` 
     }
 
     getSemanas(){
         let fechaActual = new Date(Date.now())
-        let añosTranscurridos = fechaActual.getFullYear() - this.fecha.getFullYear()
-        return `Han pasado ${añosTranscurridos * 52} semanas desde ${this.fecha.getFullYear()}`
+        let añosTranscurridos = fechaActual.getFullYear() - this._fecha.getFullYear()
+        return `Han pasado ${añosTranscurridos * 52} semanas desde ${this._fecha.getFullYear()}`
 
     }
 
     getDias(){
         let fechaActual = new Date(Date.now())
-        let añosTranscurridos = fechaActual.getFullYear() - this.fecha.getFullYear()
-        return `Han pasado ${añosTranscurridos * 365} dias desde ${this.fecha.getFullYear()}`
+        let añosTranscurridos = fechaActual.getFullYear() - this._fecha.getFullYear()
+        return `Han pasado ${añosTranscurridos * 365} dias desde ${this._fecha.getFullYear()}`
     }
 
     getDiaFecha(){
-        return`${this.diaSemana[this.fecha.getDay()]}`
+        return`${this._diaSemana[this._fecha.getDay()]}`
     }
 
 }

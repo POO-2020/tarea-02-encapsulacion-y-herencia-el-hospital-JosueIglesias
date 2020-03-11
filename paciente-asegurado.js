@@ -8,4 +8,8 @@ export default class PacienteAsegurado extends Paciente{
         this._fechaSinVigencia = fechaSinVigencia
         this._compañia = compañia
     }
+
+    _getPerfil() {
+       return`%{}` 
+    }
 }
