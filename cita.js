@@ -14,3 +14,8 @@ export default class Cita {
         return`${this._fecha.getFecha()}, ${this._hora.getFormato24()} ,${this._doctor.nombre}, ${this._paciente.nombre}`
     }
 }
+
+/* 
+this. cita = new Cita {
+nombre:
+}*/
