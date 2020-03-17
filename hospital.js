@@ -1,5 +1,5 @@
 export default class Hospital {
-    constructor(nombre, direccion){
+    constructor({nombre, direccion}){
         this._nombre = nombre
         this._direccion = direccion
         this._doctores = new Array
@@ -8,6 +8,16 @@ export default class Hospital {
 
     registrarDoctores(doctor){
         this._doctores.push(doctor)
+    }
+
+    buscarDoctor(doctor) {
+        let result = null
+
+        this._doctores.forEach(e => {
+            //if ()
+        }
+
+        )
     }
 
     listarDoctores(){

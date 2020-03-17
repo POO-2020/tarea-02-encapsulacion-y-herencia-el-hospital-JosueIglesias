@@ -7,13 +7,35 @@ import Cita from "./cita.js"
 import Hospital from "./hospital.js"
 import PacienteAsegurado from "./paciente-asegurado.js"
 
+//let cita1 = new Cita(new Fecha(2020, 6, 12), new Tiempo(4, 30, "PM"), this.doctor1._nombre, this.paciente1._nombre) 
+
+
+const datosPaciente1 = {
+    nombre: new Nombre ("Anastasio Arquimides", "Figueroa", "Brisuela"),
+    fechaNacimiento: new Fecha (2001, 4, 3),
+    telefono: 567432
+}
+
+const datosDoctor1 = {
+    cedula: 141452,
+    especialidad: "Pediatra",
+    nombre: new Nombre("Jose Antonio", "Zarate", "Ornolos" ),
+    telefono: "232-323-125"
+}
+
+const datosDoctor2 = {
+    cedula: 968842,
+    especialidad: "Dermatologo",
+    nombre: new Nombre("Eduark" , "Labristo", "Antipoda"),
+    telefono: "555-92-92"
+}
+
+
 class Main {
     constructor() {
-        this.doctor1 = new Doctor(141452, "Pediatra", new Nombre("Jose Antonio", "Zarate", "Ornolos" ), "232-323-125")
-        this.doctor2 = new Doctor(968842, "Dermatologo", new Nombre("Eduark" , "Labristo", "Antipoda"), "555-92-92")
-        this.paciente1 = new Paciente(new Nombre ("Anastasio arquimides", "brisuela", "Lopez" ), new Fecha(2000, 5, 25), 567432)
-
-        this.hospital = new Hospital ("Hospital Puerta de Fierro", "Av. Villalobos #504")
+        this.doctor1 = new Doctor(datosDoctor1)
+        this.doctor2 = new Doctor(datosDoctor2)
+        this.paciente1 = new Paciente(datosPaciente1)
     }
 
     probarNombre() {
@@ -50,24 +72,32 @@ class Main {
 
    probarPaciente() {
         console.log("----------Paciente----------")
+
         //let paciente1 = new Paciente(new Nombre ("Anastasio arquimides", "brisuela", "Lopez" ), new Fecha(2000, 5, 25), 567432)
         console.log(this.paciente1.getPerfil())
     } 
 
     probarCita(){
         console.log("----------Citas----------")
-        let cita1 = new Cita(new Fecha(2020, 6, 12), new Tiempo(4, 30, "PM"), this.doctor1.nombre, this.paciente1.nombre) 
+        let datosCita1 = {
+            fecha: new Fecha(2020, 6, 12),
+            hora: new Tiempo(4, 30, "PM"),
+            doctor: this.doctor1._nombre,
+            paciente: this.paciente1._nombre
+        }
+        let cita1 = new Cita(datosCita1) 
         console.log(cita1.getPerfil())
     }
 
     probarHospital() {
         console.log("----------Hospital----------")
-        console.log(this.hospital.nombre)
-        console.log(this.hospital.direccion)
-        this.hospital.registrarDoctores(this.doctor1)
-        this.hospital.registrarDoctores(this.doctor2)
-        this.hospital.listarDoctores()
-
+        let hospital = new Hospital ({nombre:"Hospital Puerta de Fierro",
+        direccion: "Av. Villalobos #504"})
+        console.log(hospital._nombre)
+        console.log(hospital._direccion)
+        hospital.registrarDoctores(this.doctor1)
+        hospital.registrarDoctores(this.doctor2)
+        hospital.listarDoctores()
     }
 
     probarPacienteAsegurado(){
@@ -79,14 +109,13 @@ class Main {
             numeroPoliza: 3434346 ,
             finVigencia: new Fecha (2022, 5, 30),
             compañia: "Movistar"
+
         }
 
         let pacienteAsegurado1 = new PacienteAsegurado(datosPacienteAsegurado1)
 
-        pacienteAsegurado1.getPerfil()
+        console.log(pacienteAsegurado1.getPerfil())
     }
-    
-
 }
 let app = new Main()
 app.probarNombre()

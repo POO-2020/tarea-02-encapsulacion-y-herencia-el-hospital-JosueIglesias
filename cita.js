@@ -3,7 +3,7 @@ import Doctor from "./doctor.js"
 import Tiempo from "./tiempo.js"
 import Paciente from "./paciente.js"
 export default class Cita {
-    constructor(fecha = new Fecha, hora = new Tiempo, doctor = new Doctor , paciente = new Paciente) {
+    constructor({fecha , hora , doctor , paciente}) {
         this._fecha = fecha
         this._hora = hora
         this._doctor = doctor
@@ -11,7 +11,7 @@ export default class Cita {
     }
 
     getPerfil(){
-        return`${this._fecha.getFecha()}, ${this._hora.getFormato24()} ,${this._doctor.nombre}, ${this._paciente.nombre}`
+        return`${this._fecha.getFecha()}, ${this._hora.getFormato24()} ,${this._doctor._nombre}, ${this._paciente._nombre}`
     }
 }
 

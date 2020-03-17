@@ -1,6 +1,6 @@
 import Nombre from "./nombre.js"
 export default class Doctor {
-    constructor(cedula, especialidad, nombre = new Nombre , telefono){
+    constructor({cedula, especialidad, nombre , telefono}){
         this._cedula = cedula
         this._especialidad = especialidad
         this._nombre = nombre
