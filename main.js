@@ -30,12 +30,51 @@ const datosDoctor2 = {
     telefono: "555-92-92"
 }
 
+const datosDoctor3 = {
+    cedula: 965523,
+    especialidad: "Oftamologo",
+    nombre: new Nombre("Ed" , "Carabola", "Loma"),
+    telefono: "535-34-92"
+}
+
+const datosDoctor4 = {
+    cedula: 556677,
+    especialidad: "Cirujano",
+    nombre: new Nombre("Boro" , "Foro", "Pogo"),
+    telefono: "225-35-32"
+}
 
 class Main {
     constructor() {
         this.doctor1 = new Doctor(datosDoctor1)
         this.doctor2 = new Doctor(datosDoctor2)
+        this.doctor3 = new Doctor(datosDoctor3)
+        this.doctor4 = new Doctor(datosDoctor4)
         this.paciente1 = new Paciente(datosPaciente1)
+        this.cita1 = new Cita({
+            fecha: new Fecha(2020, 6, 12),
+            hora: new Tiempo(4, 30, "PM"),
+            doctor: this.doctor1._nombre,
+            paciente: this.paciente1._nombre}) 
+        this.cita2 = new Cita ({
+            fecha: new Fecha(2020, 4, 22),
+            hora: new Tiempo(1, 30, "PM"),
+            doctor: this.doctor2._nombre,
+            paciente: this.paciente1._nombre
+        })
+        this.cita3 = new Cita ({
+            fecha: new Fecha(2021, 8, 10),
+            hora: new Tiempo(8, 30, "PM"),
+            doctor: this.doctor3._nombre,
+            paciente: this.paciente1._nombre
+        })
+        this.cita4 = new Cita ({
+            fecha: new Fecha(2020, 9, 11),
+            hora: new Tiempo(4, 44, "PM"),
+            doctor: this.doctor1._nombre,
+            paciente: this.paciente1._nombre
+        })
+
     }
 
     probarNombre() {
@@ -79,14 +118,7 @@ class Main {
 
     probarCita(){
         console.log("----------Citas----------")
-        let datosCita1 = {
-            fecha: new Fecha(2020, 6, 12),
-            hora: new Tiempo(4, 30, "PM"),
-            doctor: this.doctor1._nombre,
-            paciente: this.paciente1._nombre
-        }
-        let cita1 = new Cita(datosCita1) 
-        console.log(cita1.getPerfil())
+        console.log(this.cita1.getPerfil())
     }
 
     probarHospital() {
@@ -97,7 +129,27 @@ class Main {
         console.log(hospital._direccion)
         hospital.registrarDoctores(this.doctor1)
         hospital.registrarDoctores(this.doctor2)
+        hospital.registrarDoctores(this.doctor3)
+        console.log(hospital.encontrarIndiceDoctor(this.doctor3))
         hospital.listarDoctores()
+        console.log(hospital.eliminarDoctor(this.doctor3))
+        hospital.listarDoctores()
+        console.log(hospital.buscarDoctor(this.doctor3))
+        console.log(hospital.actualizarDoctor(this.doctor2, this.doctor4))
+        hospital.listarDoctores()
+
+        hospital.registrarCitas(this.cita1)
+        hospital.registrarCitas(this.cita2)
+        hospital.registrarCitas(this.cita3)
+
+        hospital.listarCitas()
+
+        console.log(hospital.buscarCita(this.cita2))
+        console.log(hospital.encontrarIndiceCita(this.cita3))
+        console.log(hospital.eliminarCita(this.cita2))
+        hospital.listarCitas()
+        console.log(hospital.actualizarCita(this.cita1, this.cita4))
+        hospital.listarCitas()
     }
 
     probarPacienteAsegurado(){

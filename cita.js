@@ -13,6 +13,13 @@ export default class Cita {
     getPerfil(){
         return`${this._fecha.getFecha()}, ${this._hora.getFormato24()} ,${this._doctor._nombre}, ${this._paciente._nombre}`
     }
+
+    esIgualA(cita){
+        if((cita._fecha && cita._hora) === (this._fecha && this._hora)){
+            return true
+        }
+        return false
+    }
 }
 
 /* 
